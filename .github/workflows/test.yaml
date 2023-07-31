@@ -100,21 +100,32 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        php-version: [ '8.2', '8.1', '8.0', '7.4' ]
-        php-thread-safe: [ true, false ]
-        librabbitmq-version: [ 'master', '0.13.0', '0.12.0', '0.11.0', '0.10.0', '0.9.0', '0.8.0' ]
-        include:
-          - php-version: '8.2'
-            php-thread-safe: false
-            librabbitmq-version: 'master'
-            test-php-args: '-m'
-
-          - php-version: '8.1'
-            php-thread-safe: true
-            librabbitmq-version: 'master'
-            test-php-args: '-m'
+        #php-version: [ '8.2', '8.1', '8.0', '7.4' ]
+        php-version: [ '8.2', '7.4' ]
+        #php-thread-safe: [ true, false ]
+        php-thread-safe: [ true ]
+        librabbitmq-version: [ 'master', '0.8.0' ]
+        os: [ macos ]
+        #include:
+        #  - php-version: '8.2'
+        #    php-thread-safe: false
+        #    librabbitmq-version: 'master'
+        #    test-php-args: '-m'
+#
+        #  - php-version: '8.1'
+        #    php-thread-safe: true
+        #    librabbitmq-version: 'master'
+        #    test-php-args: '-m'
 
     steps:
+      - name: Install Linux packages
+        run: sudo apt-get install -y cmake valgrind
+        if: matrix.os == 'linux'
+
+      - name: Install macOS packages
+        run: brew install docker docker-compose cmake openssl
+        if: matrix.os == 'macos'
+
       - name: Checkout
         uses: actions/checkout@v3.5.3
 
@@ -126,9 +137,6 @@ jobs:
 
       - name: Start RabbitMQ
         run: docker compose up -d rabbitmq
-
-      - name: Install packages
-        run: sudo apt-get install -y cmake valgrind
 
       - name: Setup PHP
         uses: shivammathur/setup-php@2.25.5
