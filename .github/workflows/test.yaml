@@ -124,7 +124,7 @@ jobs:
 
       - name: Install macOS packages
         run: |
-          brew cask install docker
+          brew install docker --cask
           brew install docker-compose cmake openssl
         if: matrix.os == 'macos'
 
