@@ -137,10 +137,10 @@ jobs:
         run: sudo echo "127.0.0.1 ${{ env.PHP_AMQP_SSL_HOST }}" | sudo tee -a /etc/hosts
 
       - name: Generate test certificates
-        run: docker compose up ca
+        run: docker-compose up ca
 
       - name: Start RabbitMQ
-        run: docker compose up -d rabbitmq
+        run: docker-compose up -d rabbitmq
 
       - name: Setup PHP
         uses: shivammathur/setup-php@2.25.5
@@ -164,7 +164,7 @@ jobs:
         run: make test | tee result.txt
 
       - name: Dump RabbitMQ logs
-        run: docker compose logs
+        run: docker-compose logs
 
       - name: Benchmark PHP extension
         run: php -n -c './tmp-php.ini' -d "extension_dir=./modules/" -d "extension=amqp.so" benchmark.php
