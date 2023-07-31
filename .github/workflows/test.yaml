@@ -122,10 +122,8 @@ jobs:
         run: sudo apt-get install -y cmake valgrind
         if: matrix.os == 'linux'
 
-      - name: Install macOS packages
-        run: |
-          brew install docker --cask
-          brew install docker-compose cmake openssl
+      - name: Set up Docker on macOS
+        uses: crazy-max/ghaction-setup-docker@v1.1.0
         if: matrix.os == 'macos'
 
       - name: Checkout
