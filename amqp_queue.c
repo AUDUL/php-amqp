@@ -1059,8 +1059,6 @@ static PHP_METHOD(amqp_queue_class, cancel)
         zend_update_property_null(this_ce, PHP_AMQP_COMPAT_OBJ_P(getThis()), ZEND_STRL("consumerTag"));
     }
 
-    zend_hash_str_del_ind(Z_ARRVAL_P(consumers), r->consumer_tag.bytes, r->consumer_tag.len);
-
     php_amqp_maybe_release_buffers_on_channel(channel_resource->connection_resource, channel_resource);
 }
 /* }}} */
