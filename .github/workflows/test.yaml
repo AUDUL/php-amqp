@@ -114,7 +114,7 @@ jobs:
       - run: phpize
       - run: ./configure --with-amqp --with-extra-includes=${{ github.workspace }}\rabbitmq-c\include --with-extra-libs=${{ github.workspace }}\rabbitmq-c\lib --with-prefix=${{ steps.setup-php-windows.outputs.prefix }}
       - run: dir
-      - run: nmake
+      - run: nmake /nologo
 
   test:
     name: ${{ matrix.test-php-args == '-m' && 'Memtest' || 'Test' }} php-${{ matrix.php-version }}${{ matrix.php-thread-safe && '-ts' || '-nts' }} librabbitmq-${{ matrix.librabbitmq-version }} ${{ matrix.compiler }}
