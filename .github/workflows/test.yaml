@@ -112,7 +112,7 @@ jobs:
           arch: x64
           toolset: ${{ steps.setup-php-windows.outputs.toolset }}
       - run: phpize
-      - run: Start-Process "cmd.exe"  "/c configure.bat"
+      - run: ./configure
       - run: nmake
 
   test:
