@@ -112,7 +112,7 @@ jobs:
           arch: x64
           toolset: ${{ steps.setup-php-windows.outputs.toolset }}
       - run: phpize
-      - run: ./configure --with-amqp --with-extra-includes=${{ github.workspace }}/rabbitmq-c/include --with-extra-libs=${{ github.workspace }}/rabbitmq-c/lib with-prefix=${{ steps.setup-php-sdk.outputs.prefix }}
+      - run: ./configure --with-amqp --with-extra-includes=${{ github.workspace }}/rabbitmq-c/include --with-extra-libs=${{ github.workspace }}/rabbitmq-c/lib --with-prefix=${{ steps.setup-php-windows.outputs.prefix }}
       - run: nmake
 
   test:
