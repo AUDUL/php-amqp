@@ -111,19 +111,9 @@ jobs:
         with:
           arch: x64
           toolset: ${{ steps.setup-php-windows.outputs.toolset }}
-
-      - name: PHPIZE
-        run: phpize
-
-      - name: Dir
-        run: dir
-
-      - name: configure
-        run: configure.bat
-
-      - name: nmake
-        run: nmake /nologo
-
+      - run: phpize
+      - run: configure --enable-dbase --with-prefix=${{steps.setup-php-sdk.outputs.prefix}}
+      - run: nmake
 
   test:
     name: ${{ matrix.test-php-args == '-m' && 'Memtest' || 'Test' }} php-${{ matrix.php-version }}${{ matrix.php-thread-safe && '-ts' || '-nts' }} librabbitmq-${{ matrix.librabbitmq-version }} ${{ matrix.compiler }}
