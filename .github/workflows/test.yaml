@@ -115,6 +115,9 @@ jobs:
       - name: PHPIZE
         run: phpize
 
+      - name: Dir
+        run: dir
+
       - name: configure
         run: configure
 
