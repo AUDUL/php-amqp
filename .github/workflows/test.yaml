@@ -114,6 +114,8 @@ jobs:
       - run: phpize
       - run: ./configure --with-amqp --with-extra-includes=${{ github.workspace }}\rabbitmq-c\include --with-extra-libs=${{ github.workspace }}\rabbitmq-c\lib --with-prefix=${{ steps.setup-php-windows.outputs.prefix }}
       - run: dir
+      - run: Get-Content Makefile
+      - run: Get-Content Makefile.objects
       - run: nmake /nologo
 
   test:
