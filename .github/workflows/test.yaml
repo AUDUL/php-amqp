@@ -8,6 +8,7 @@ on:
 env:
   TEST_TIMEOUT: 120
   #CFLAGS: /D FORTIFY_SOURCE=2 /fstack-protector-strong /Wall /Werror
+  CFLAGS: /D HAVE_LIBRABBITMQ_NEW_LAYOUT=1
   PHP_AMQP_SSL_HOST: rabbitmq.example.org
   #MAKEFLAGS: -j4
 
