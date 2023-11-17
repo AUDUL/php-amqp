@@ -112,6 +112,9 @@ jobs:
           arch: x64
           toolset: ${{ steps.setup-php-windows.outputs.toolset }}
 
+      - name: PHPIZE
+        run: phpize
+
       - name: configure
         run: configure
 
