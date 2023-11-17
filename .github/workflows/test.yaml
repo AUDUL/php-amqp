@@ -112,7 +112,7 @@ jobs:
           arch: x64
           toolset: ${{ steps.setup-php-windows.outputs.toolset }}
       - run: phpize
-      - run: ./configure --with-amqp
+      - run: ./configure --help
       - run: nmake
 
   test:
