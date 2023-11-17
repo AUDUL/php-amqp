@@ -63,19 +63,8 @@ typedef struct _amqp_connection_params {
 } amqp_connection_params;
 
 /* Figure out what's going on connection and handle protocol exceptions, if any */
-int php_amqp_connection_resource_error(
-    amqp_rpc_reply_t reply,
-    char **message,
-    amqp_connection_resource *resource,
-    amqp_channel_t channel_id
-);
-int php_amqp_connection_resource_error_advanced(
-    amqp_rpc_reply_t reply,
-    char **message,
-    amqp_connection_resource *resource,
-    amqp_channel_t channel_id,
-    amqp_channel_object *channel
-);
+int php_amqp_connection_resource_error(amqp_rpc_reply_t reply, char **message, amqp_connection_resource *resource, amqp_channel_t channel_id);
+int php_amqp_connection_resource_error_advanced(amqp_rpc_reply_t reply, char **message, amqp_connection_resource *resource, amqp_channel_t channel_id, amqp_channel_object *channel);
 
 /* Socket-related functions */
 int php_amqp_set_resource_read_timeout(amqp_connection_resource *resource, double read_timeout);
@@ -87,11 +76,7 @@ int php_amqp_set_resource_rpc_timeout(amqp_connection_resource *resource, double
 /* Channel-related functions */
 amqp_channel_t php_amqp_connection_resource_get_available_channel_id(amqp_connection_resource *resource);
 int php_amqp_connection_resource_unregister_channel(amqp_connection_resource *resource, amqp_channel_t channel_id);
-int php_amqp_connection_resource_register_channel(
-    amqp_connection_resource *resource,
-    amqp_channel_resource *channel_resource,
-    amqp_channel_t channel_id
-);
+int php_amqp_connection_resource_register_channel( amqp_connection_resource *resource, amqp_channel_resource *channel_resource, amqp_channel_t channel_id);
 
 /* Creating and destroying resource */
 amqp_connection_resource *connection_resource_constructor(amqp_connection_params *params, zend_bool persistent);
