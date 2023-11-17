@@ -112,12 +112,6 @@ jobs:
           arch: x64
           toolset: ${{ steps.setup-php-windows.outputs.toolset }}
 
-      - name: Generate test certificates
-        run: docker compose up ca
-
-      - name: Start RabbitMQ
-        run: docker compose up -d rabbitmq
-
       - name: configure
         run: configure
 
