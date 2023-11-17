@@ -101,7 +101,7 @@ jobs:
         id: setup-php-windows
         uses: cmb69/setup-php-sdk@v0.7
         with:
-          version: 8.1
+          version: 8.2
           arch: x64
           ts: nts
           deps: openssl
@@ -112,7 +112,7 @@ jobs:
           arch: x64
           toolset: ${{ steps.setup-php-windows.outputs.toolset }}
       - run: phpize
-      - run: ./configure
+      - run: ./configure --with-amqp
       - run: nmake
 
   test:
