@@ -95,15 +95,15 @@ jobs:
     runs-on: windows-2022
     steps:
       - name: Checkout
-        uses: actions/checkout@v3.5.3
+        uses: actions/checkout@v4
 
       - name: Setup PHP SDK
         id: setup-php-windows
         uses: cmb69/setup-php-sdk@v0.7
         with:
-          version: 8.2
+          version: 8.1
           arch: x64
-          ts: ts
+          ts: nts
           deps: openssl
 
       - name: Enable Developer Command Prompt
