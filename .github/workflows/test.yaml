@@ -119,7 +119,7 @@ jobs:
         run: dir
 
       - name: configure
-        run: configure
+        run: configure.bat
 
       - name: nmake
         run: nmake /nologo
